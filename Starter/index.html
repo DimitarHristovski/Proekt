@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dfd</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/slider.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="container mx-auto bg-cream flex flex-col section">
+
+        <nav class="text-center py-4 drop-shadow-md" id="navbar">
+            <h2 class="font-fam f-size">Street artists</h2>
+        </nav>
+
+        <img class="m-auto my-0" src="./images/76974-[Converted] 1.png" alt="logo">
+
+        <div class="mainContainer m-auto my-5 flex">
+            <a href="#artist-section" class="polygonUp m-auto" onclick="navigateTo('artist-section')">
+                <div class="items flex items-end flex-col py-2 m-3">
+                    <h1 class="text-right f-size font-fam">Join as Artist</h1>
+                    <select id="artists" class="flex">
+                        <option value="Choose">Choose</option>
+                    </select>
+                </div>
+            </a>
+
+            <a href="#visitor-section" class="polygonDwn m-auto flex items-center"
+                onclick="navigateTo('visitor-section')">
+                <h1 class="f-size m-auto font-fam">Join as Visitor</h1>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Visitor Section -->
+    <!-- <div id="visitor-section" class="section hidden mx-auto bg-cream flex flex-col">
+        <header class="flex flex-row-reverse justify-between items-center">
+            <img class=" my-0 " src="./images/ant-design_home-filled.svg" alt="logo">
+
+            <nav class="text-center py-4 drop-shadow-md" id="navbar">
+                <h2 class="font-fam f-size">Street artists</h2>
+            </nav>
+
+            <img class=" my-0 logo" src="./images/76974-[Converted] 1.png" alt="logo">
+        </header>
+
+        <section class="flex flex-col">
+            <div class="banner-hero flex p-3 justify-between items-center">
+                <h1 class="f-size">Looking for masterpiece?</h1>
+                <button class="btn-custom m-3 p-1">Find one now!</button>
+
+            </div>
+
+        </section>
+        <section class="flex flex-col p-8">
+
+            <div class=" mx-auto ">
+                <div class="slider flex justify-between" id="first-row">
+                </div>
+
+                <div class="slider flex justify-between mt-8" id="second-row">
+                </div>
+            </div>
+
+
+
+
+        </section>
+        <section class="flex items-center  py-8">
+            <div class="left-side p-2 border-r-4 ">
+                <div class="leftDivWrap text-center flex flex-col justify-end p-2">
+                    <img class="m-auto divIcon " src="./images/76974-[Converted] 1.png" alt="">
+
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, officiis!</p>
+                </div>
+
+            </div>
+            <div class="right-side p-2">
+                <div class="rightDivWrap text-center">
+
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, ipsa.</p>
+                </div>
+            </div>
+        </section>
+
+    </div> -->
+    <div id="visitor-section" class="section hidden mx-auto bg-cream flex flex-col">
+        <header class="flex flex-row-reverse justify-between items-center py-4 px-6">
+            <img class="h-8" src="./images/ant-design_home-filled.svg" alt="logo">
+            <nav class="text-center drop-shadow-md" id="navbar">
+                <h2 class="font-fam text-xl">Street artists</h2>
+            </nav>
+            <img class="h-8" src="./images/76974-[Converted] 1.png" alt="logo">
+        </header>
+
+        <section class="flex flex-col">
+            <div class="banner-hero flex p-3 justify-between items-center">
+                <h1 class="text-2xl">Looking for a masterpiece?</h1>
+                <button class="btn-custom m-3 p-1">Find one now!</button>
+            </div>
+        </section>
+
+        <section class="flex flex-col p-8 bg-darkcream overflow-hidden">
+            <div class="mx-auto">
+                <!-- First row -->
+                <div class="slider flex justify-between" id="first-row">
+                    <!-- Images will be added dynamically here -->
+                </div>
+
+                <!-- Second row -->
+                <div class="slider flex justify-between mt-8" id="second-row">
+                    <!-- Images will be added dynamically here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="flex items-center py-8 bg-cream">
+            <div class="left-side p-2 border-r-4">
+                <div class="leftDivWrap text-center relative flex flex-col justify-end p-2">
+                    <img class="w-16 h-16 m-auto absolute divIcon" src="./images/76974-[Converted] 1.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, officiis!</p>
+                </div>
+            </div>
+            <div class="right-side p-2">
+                <div class="rightDivWrap text-center">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, ipsa.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Artist Section -->
+    <!-- <div id="artist-section" class="section  hidden">
+        <h2>Artist Section Content</h2>
+    </div> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
+
+    <script src="./Data/data.js"></script>
+    <script src="main.js"></script>
+    <script src="./js/pages/artists.js"></script>
+</body>
+
+</html>

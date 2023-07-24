@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Roboto:ital@1&display=swap');
+
+body{
+font-family: 'Roboto', sans-serif ;
+}
+.bg-cream{
+ background-color:#FCEBD5;
+
+}
+.bg-darkcream{
+  background-color: #EDD5BB;
+}
+.container{
+    height: 100vh; 
+
+}
+.mainContainer {
+  position: relative;
+  width: 200px;
+  height: 300px;
+}
+
+.polygonUp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 50%);
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 50%);
+  background-color: #EDD5BB;
+  width: 200px;
+  height: 200px;
+}
+
+.polygonDwn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 100%);
+  background-color: #A16A5E;
+  width: 200px;
+  height: 200px;
+}
+.polygonDwn:hover,.polygonUp:hover{
+	transform: scale(1.05);
+
+}
+#artists{
+    padding: 4px 8px;
+    width: 100px;
+    background-color:#EDD5BB; 
+    border: 1px solid black;
+}
+.f-size{
+font-size: 30px;
+}
+.font-fam{
+    font-family: 'Reenie Beanie', cursive;
+
+}
+.hidden {
+    display: none;
+  }
+  .logo{
+    width: 50px;
+    height: 50px;
+  }
+  .btn-custom{
+    width: 200px;
+    background-color: #A16A5E;
+    color: aliceblue;
+    cursor: pointer;
+    border-radius: 4px;
+  }
