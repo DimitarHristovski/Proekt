@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Roboto:ital@1&display=swap');
+
+body{
+font-family: 'Roboto', sans-serif ;
+}
+.bg-cream{
+ background-color:#FCEBD5;
+
+}
+.bg-darkcream{
+  background-color: #EDD5BB;
+}
+.container{
+    height: 100vh; 
+
+}
+.itembutton{
+  width: 80%;
+  border: 1px dashed black;
+}
+.mainContainer {
+  position: relative;
+  width: 200px;
+  height: 300px;
+}
+
+.polygonUp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 50%);
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 50%);
+  background-color: #EDD5BB;
+  width: 200px;
+  height: 200px;
+}
+
+.polygonDwn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 100%);
+  background-color: #A16A5E;
+  width: 200px;
+  height: 200px;
+}
+.polygonDwn:hover,.polygonUp:hover{
+	transform: scale(1.05);
+
+}
+#artists{
+    padding: 4px 8px;
+    width: 100px;
+    background-color:#EDD5BB; 
+    border: 1px solid black;
+}
+.f-size{
+font-size: 30px;
+}
+.font-fam{
+    font-family: 'Reenie Beanie', cursive;
+
+}
+.hidden {
+    display: none;
+  }
+  .logo{
+    width: 50px;
+    height: 50px;
+  }
+  .btn-custom{
+    width: 200px;
+    background-color: #A16A5E;
+    color: aliceblue;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .bg-cream2{
+    background-color: #A16A5E;
+
+  }
+
+.border-color-white{
+  border-color: white !important;
+}
+
+.bg-brown {
+  background-color: #A16A5E !important; 
+}
+
+.maxSize{
+width: 100vw ;
+height: 100vh;
+}
+.customwidth{
+  width: 150px !important;
+}
+.PhotoDiv{
+  width: 350px;
+  height: 350px;
+  border: 1px dashed white;
+
+}
+
+/* Custom styles for the select element */
+select {
+  background-color: brown; /* Set the background color to brown */
+  color: white; /* Set the text color to white */
+  border: 1px solid white; /* Add a white border */
+  padding: 8px; /* Add some padding to make it visually appealing */
+  border-radius: 5px; /* Add border-radius for rounded corners */
+  appearance: none; /* Remove default appearance (may not work in all browsers) */
+}
+
+/* Additional styles to handle the dropdown arrow */
+select::-ms-expand {
+  display: none; /* Remove default arrow in Internet Explorer */
+}
+
+.shadow{
+  border-bottom: 1px solid grey;
+}
+.logoSize{
+width: 100px;
+height: 100px;
+position: absolute;
+top: 0;
+}
+.slide{
+  animation: slide 1s ease 0s 1 normal forwards;
+}
+@keyframes slide {
+	0% {
+		opacity: 0;
+		transform: translateX(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

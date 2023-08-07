@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artists Street</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/slider.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.23/dist/css/uikit.min.css" />
+
+</head>
+
+<body>
+    <div id="landing-page" class="container mx-auto bg-cream flex flex-col section">
+
+        <nav class="text-center py-4 shadow" id="navbar">
+            <h2 class="font-fam f-size">Street artists</h2>
+        </nav>
+
+        <img class="m-auto my-0" src="./images/76974-[Converted] 1.png" alt="logo">
+
+        <div class="mainContainer m-auto my-5 flex">
+            <div class="wrapdiv flex flex-col ">
+                <a href="#artist-section" class="polygonUp m-auto" onclick="navigateTo('artist-section')">
+                </a>
+                <div class="items flex items-end flex-col py-2 m-3 z-10">
+                    <h1 class="text-right f-size font-fam">Join as Artist</h1>
+                    <select id="artists" class="flex">
+                        <option value="Choose">Choose</option>
+                    </select>
+                </div>
+            </div>
+
+            <a href="#visitor-section" class="polygonDwn m-auto flex items-center"
+                onclick="navigateTo('visitor-section')">
+                <h1 class="f-size m-auto font-fam">Join as Visitor</h1>
+            </a>
+        </div>
+
+    </div>
+
+
+    <div id="visitor-section" class="section hidden mx-auto bg-cream flex flex-col">
+        <header class="flex flex-row-reverse justify-between items-center py-4 px-6 shadow">
+            <img class="h-8" src="./images/ant-design_home-filled.svg" alt="logo" onclick="navigateTo('auction-page')">
+            <nav class="text-center " id="navbar">
+                <h2 class="font-fam text-xl">Street artists</h2>
+            </nav>
+            <a href="#landing-page" onclick="navigateTo('landing-page')"> <img class="logoSize "
+                    src="./images/76974-[Converted] 1.png" alt="logo"></a>
+        </header>
+
+        <section class="flex flex-col">
+            <div class="banner-hero flex py-8 justify-between items-center">
+                <h1 class="text-2xl">Looking for a masterpiece?</h1>
+                <button class="btn-custom m-3 p-1" onclick="navigateTo('visitor-listing')">Find one now!</button>
+            </div>
+        </section>
+
+        <section class="flex flex-col py-8 bg-darkcream overflow-hidden">
+            <!-- <div class="mx-auto">
+                <div class="slider flex justify-between" id="first-row">
+                </div>
+
+                <div class="slider flex justify-between mt-8" id="second-row">
+                </div>
+            </div> -->
+
+
+
+
+        </section>
+
+
+
+        <div id="controls-carousel" class="relative w-full py-6 flex justify-center" data-carousel="static">
+            <!-- Carousel wrapper -->
+            <div class="relative h-64 overflow-hidden rounded-lg md:h-96 w-80">
+                <!-- Item 1 -->
+                <div class="hidden  " data-carousel-item>
+                    <div class="flex items-center ">
+                        <div class="left-side p-2 border-r-4 my-6">
+                            <div class="leftDivWrap text-center relative flex flex-col justify-end p-2">
+                                <img class="w-16 h-16 m-auto absolute divIcon"
+                                    src="./images/Unsplash-Avatars_0000s_0035_azamat-zhanisov-a5sRFieA3BY-unsplash 1.png"
+                                    alt="">
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, officiis!</p>
+                            </div>
+                        </div>
+                        <div class="right-side p-2">
+                            <div class="rightDivWrap text-center">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, ipsa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="hidden  " data-carousel-item="active">
+                    <div class="flex items-center">
+                        <div class="left-side p-2 border-r-4 my-6">
+                            <div class="leftDivWrap text-center relative flex flex-col justify-end p-2">
+                                <img class="w-16 h-16 m-auto absolute divIcon"
+                                    src="./images/Unsplash-Avatars_0005s_0009_benjamin-parker-ym--mSBZ0ro-unsplash.png"
+                                    alt="">
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, officiis!</p>
+                            </div>
+                        </div>
+                        <div class="right-side p-2">
+                            <div class="rightDivWrap text-center">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, ipsa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="hidden   " data-carousel-item>
+                    <div class="flex items-center">
+                        <div class="left-side p-2 border-r-4 my-6">
+                            <div class="leftDivWrap text-center relative flex flex-col justify-end p-2">
+                                <img class="w-16 h-16 m-auto absolute divIcon"
+                                    src="./images/Unsplash-Avatars_0005s_0020_maria-badasian-eh9hH2bmL_A-unsplash.png"
+                                    alt="">
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, officiis!</p>
+                            </div>
+                        </div>
+                        <div class="right-side p-2">
+                            <div class="rightDivWrap text-center">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, ipsa.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Slider controls -->
+            <button type="button"
+                class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-prev>
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full">
+                    <svg class="w-4 h-8 txt-custom dark:text-gray-800" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 1 1 5l4 4" />
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+            <button type="button"
+                class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-next>
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full">
+                    <svg class="w-4 h-8 txt-custom dark:text-gray-800" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 9 4-4-4-4" />
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
+        </div>
+
+
+    </div>
+
+    <div id="visitor-listing" class="section hidden mx-auto bg-cream flex flex-col">
+        <header class="flex  flex-row-reverse justify-between items-center py-4 px-6 shadow">
+            <img class="h-8" src="./images/ant-design_home-filled.svg" alt="logo" onclick="navigateTo('auction-page')">
+            <nav class="text-center " id="navbar">
+                <h2 class="font-fam text-xl">Street artists</h2>
+            </nav>
+            <a href="#landing-page" onclick="navigateTo('landing-page')">
+                <img class="logoSize" src="./images/76974-[Converted] 1.png" alt="logo">
+            </a>
+        </header>
+        <div id="art-items" class=" mx-auto  flex flex-col bg-darkcream ">
+        </div>
+        <div class="fixed bottom-4 right-4">
+            <button data-modal-target="medium-modal" data-modal-toggle="medium-modal" class="block w-full md:w-auto"
+                type="button">
+                <img src="./images/Group 14.svg" alt="">
+            </button>
+        </div>
+        <!-- Default Modal -->
+        <div id="medium-modal" tabindex="-1"
+            class="fixed top-0 left-0 right-0 z-50 hidden w-full  overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full slide">
+            <div class="relative bg-brown maxSize rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <header class="flex flex-row-reverse justify-between items-center py-4 px-6 bg-cream">
+                    <img class="h-8" src="./images/ant-design_home-filled.svg" alt="logo">
+                    <nav class="text-center drop-shadow-md" id="navbar">
+                        <h2 class="font-fam text-xl">Street artists</h2>
+                    </nav>
+                    <a href="#landing-page" onclick="navigateTo('landing-page')" data-modal-hide="medium-modal">
+                        <img class="logoSize" src="./images/76974-[Converted] 1.png" alt="logo">
+                    </a>
+                </header>
+                <div class="flex items-center   p-5 ">
+
+                    <h3 class="text-xl font-medium text-white">
+                        Filter By
+                    </h3>
+
+                    <!-- ... Your HTML code for the modal ... -->
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 text-white"
+                        data-modal-hide="medium-modal" onclick="resetFilters()">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <!-- ... Rest of your HTML code ... -->
+
+                </div>
+                <!-- Modal body -->
+                <div class="space-y-6 p-5">
+                    <form action="/action_page.php" class="text-white bg-brown">
+                        <label for="">By Item Title</label>
+                        <select id="title-filter" class="bg-brown text-white border-color-white customwidth"
+                            aria-placeholder="Label">
+                            <option value="Choose">Choose</option>
+
+                        </select>
+                    </form>
+
+                    <hr>
+                    <form action="/action_page.php" class="text-white">
+                        <label for="">By Artist</label>
+                        <select id="artists-filter" class="flex bg-brown border-color-white customwidth">
+                            <option value="Choose">Choose</option>
+
+                        </select>
+                    </form>
+                    <hr>
+                    <form action="/action_page.php" class="text-white ">
+                        <label for="">By Price</label>
+                        <div class="flex  justify-between">
+                            <div class="flex justify-start"><label for="min-price">Min:</label>
+                                <input type="number" id="min-price"
+                                    class="bg-brown text-white w-14 h-8 border-color-white"></div>
+
+                            <div class="flex justify-end"><label for="max-price">Max:</label>
+                                <input type="number" id="max-price"
+                                    class="bg-brown text-white w-14 h-8 border-color-white"></div>
+
+                        </div>
+
+
+                    </form>
+                    <hr>
+
+                    <form action="/action_page.php" class="text-white">
+                        <label for="">By Type</label>
+                        <select id="type-filter" aria-placeholder="Label" class="bg-brown border-color-white">
+                            <option value="Choose">Choose</option>
+                            <!-- Add options for each item type -->
+                            <option value="painting">Painting</option>
+                            <option value="sculpture">Sculpture</option>
+                            <option value="digital">Digital</option>
+                            <option value="custom">custom</option>
+
+                        </select>
+                    </form>
+                    <hr>
+                </div>
+                <!-- Modal footer -->
+                <div class="flex items-end justify-end p-6 space-x-2 ">
+
+                    <button data-modal-hide="medium-modal" type="button" class=" "><img src="./images/Group 15.svg"
+                            alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="artist-section" class="section hidden mx-auto bg-cream flex flex-col">
+
+        <nav class="bg-cream shadow py-2">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between  ">
+                <a href="#" class="flex items-center">
+                    <img src="./images/76974-[Converted] 1.png" class="logoSize mr-3" alt=" Logo"
+                        onclick="navigateTo('landing-page')" />
+
+                </a>
+                <p id="appendedName" class=" text-2xl font-semibold whitespace-nowrap dark:text-white font-fam">
+                    Artist
+                    Name</p>
+                <button data-collapse-toggle="navbar-multi-level" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-multi-level" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
+                    <ul class="flex flex-col font-medium bg-cream2 text-center">
+                        <li>
+                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                onclick="navigateTo('artist-section')">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                onclick="navigateTo('artist-item')">Items</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                onclick="navigateTo('auction-page')">Auction</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="item-data bg-darkcream flex flex-col ">
+            <div class="top-container flex justify-between text-white p-3">
+
+                <div class="items-sold p-5 text-center bg-cream2 w-1/2 m-2">
+                    <p>Total Items Sold</p>
+                    <span id="totalItemsSold"></span>
+                </div>
+                <div class="total-income p-3 text-center bg-cream2 w-1/2 m-2">
+                    <p>Total-Income</p>
+                    <span id="totalIncome"></span>
+                </div>
+            </div>
+            <div class="Live-Auctioning p-3">
+                <div class="auction-data text-center text-white p-5 bg-orange-400 m-2">
+                    <p>Live Auctioning Item</p>
+                    <span>$1200</span>
+                    <p>current bid</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="chart-data">
+            <div class="chart-header">
+                <h1 class="text-cream2">Display my income for last</h1>
+                <div class="button-group flex justify-center">
+                    <button id="last7" class="p-1 text-center text-white bg-cream2 w-1/6 m-2">
+
+                        7 days
+                    </button>
+                    <button id="last14" class="p-1  text-center text-white bg-cream2 w-1/6 m-2">
+
+                        14 days
+                    </button>
+                    <button id="last30" class="p-1  text-center text-white bg-cream2 w-1/6 m-2">
+
+                        1 month
+                    </button>
+                    <button id="last365" class="p-1  text-center text-white bg-cream2 w-1/6 m-2">
+
+                        1 year
+                    </button></div>
+
+            </div>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <div id="artist-item" class="section hidden mx-auto bg-cream flex flex-col">
+
+        <nav class="bg-cream shadow">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-3">
+                <a href="#" class="flex items-center">
+                    <img src="./images/76974-[Converted] 1.png" class="h-8 mr-3" alt=" Logo"
+                        onclick="navigateTo('landing-page')" />
+                    <span id="appendedName"
+                        class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Artist
+                        Name</span>
+                </a>
+                <button data-collapse-toggle="nav-links" type="button"
+                    class="inline-flex navy items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="nav-links" aria-expanded="false" onclick="toggleNavigation()">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div id="nav-links" class="hidden w-full md:block md:w-auto">
+                    <ul class="flex flex-col font-medium bg-cream2 text-center">
+                        <li>
+                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                onclick="navigateTo('artist-section')">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                onclick="navigateTo('artist-item')">Items</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                onclick="navigateTo('auction-page')">Auction</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container bg-darkcream py-3">
+            <div class="addNewItem bg-cream flex justify-center py-3">
+                <button type="button" class="py-5 text-center itembutton block " data-modal-target="extralarge-modal"
+                    data-modal-toggle="extralarge-modal">+Add new item</button>
+            </div>
+        </div>
+
+        <div id="extralarge-modal" tabindex="-1"
+            class="fixed maxSize top-0 left-0 right-0 z-50 hidden w-full  overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full slide">
+            <div class="relative w-full max-w-7xl max-h-full">
+                <nav class="bg-cream shadow">
+                    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-3">
+                        <a href="#" class="flex items-center">
+                            <img src="./images/76974-[Converted] 1.png" class="h-8 mr-3" alt=" Logo"
+                                onclick="navigateTo('landing-page')" />
+                            <span id="appendedName"
+                                class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Artist
+                                Name</span>
+                        </a>
+                        <button data-collapse-toggle="nav-link" type="button"
+                            class="inline-flex navy items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                            aria-controls="nav-link" aria-expanded="false" onclick="toggleNavigation()">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 17 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                            </svg>
+                        </button>
+                        <div id="nav-link" class="hidden w-full md:block md:w-auto">
+                            <ul class="flex flex-col font-medium bg-cream2 text-center">
+                                <li>
+                                    <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                        onclick="navigateTo('artist-section')"
+                                        data-modal-hide="extralarge-modal">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                        onclick="navigateTo('artist-item')" data-modal-hide="extralarge-modal">Items</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                        onclick="navigateTo('auction-page')"
+                                        data-modal-hide="extralarge-modal">Auction</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Modal content -->
+                <div class="relative text-white bg-brown ">
+                    <!-- Modal header -->
+                    <div class="flex items-center  justify-between p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-medium text-white">
+                            Add new item
+                        </h3>
+
+
+                        <div class="flex items-center "><label for="checkbox" class="mx-2">Is
+                                published</label><input type="checkbox">
+                        </div>
+
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6">
+                        <!-- Input field 1 -->
+                        <div>
+                            <label for="input-field-1" class="text-white">Title</label>
+                            <input type="text" id="input-field-1"
+                                class="bg-brown text-white w-full h-6 border-color-white">
+                        </div>
+
+                        <!-- Input field 2 -->
+                        <div>
+                            <label for="input-field-2" class="text-white">Description</label>
+                            <input type="text" id="text-field"
+                                class="bg-brown text-white w-full h-10 border-color-white">
+                        </div>
+
+                        <div class="inputPair flex items-center w-full justify-between">
+                            <!-- Input field 3 -->
+                            <div class="flex flex-col">
+                                <label for="input-field-3" class="text-white ">Type</label>
+                                <input type="text" id="input-field-3"
+                                    class="bg-brown text-white customwidth h-6 border-color-white ">
+                            </div>
+
+                            <!-- Input field 4 -->
+                            <div class="flex flex-col">
+                                <label for="input-field-4" class="text-white">Price</label>
+                                <input type="text" id="input-field-4"
+                                    class="bg-brown text-white customwidth h-6 border-color-white ">
+                            </div>
+                        </div>
+
+
+                        <!-- Input field 5 -->
+                        <div class="flex flex-col">
+                            <label for="input-field-5" class="text-white">Image URL</label>
+                            <input type="text" id="input-field-5"
+                                class="bg-brown text-white w-full h-10 border-color-white">
+                        </div>
+                        <p class="text-center">or</p>
+                        <div class="PhotoDiv flex items-center justify-center text-center  m-auto "><img class=""
+                                src="./images/Vector.png" alt="photo"></div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div
+                        class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600 justify-between">
+                        <button data-modal-hide="extralarge-modal" type="button"
+                            class="text-white bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                            New Item</button>
+                        <button data-modal-hide="extralarge-modal" type="button"
+                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div id="auction-page" class="section hidden mx-auto bg-cream">fdsfsfd</div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="./Data/data.js"> </script>
+
+    <script src="main.js"></script>
+    <script src="./js/pages/artists.js"></script>
+    <script src="./js/pages/artists-listings.js"></script>
+    <script src="./js/pages/main-filter.js"></script>
+    <script src="./js/pages/chart.js"></script>
+    <script src="./js/pages/artist-items.js"></script>
+
+</body>
+
+</html>
