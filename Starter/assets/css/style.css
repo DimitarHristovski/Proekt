@@ -142,3 +142,9 @@ top: 0;
 		transform: translateX(0);
 	}
 }
+#artist-section,#Photo-camera,.div-height{
+  height: 100vh;
+}
+.photodiv-size{
+  height: 80%;
+}

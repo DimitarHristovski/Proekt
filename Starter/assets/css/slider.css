@@ -42,3 +42,53 @@ background-color: #A16A5E;
 } 
 .txt-custom{
 color: #A16A5E;}
+
+
+
+
+
+
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 5px;
+}
+
+.top {
+  animation: moveLeft 10s linear infinite;
+}
+
+.bottom {
+  animation: moveRight 10s linear infinite;
+}
+
+.img-wrapper {
+  display: block;
+  margin-right: 10px;
+ 
+}
+
+
+@keyframes moveLeft {
+  from {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+  to {
+    -webkit-transform: translateX(-850px);
+    transform: translateX(-850px);
+  }
+}
+
+
+@keyframes moveRight {
+  from {
+    -webkit-transform: translateX(-850px);
+            transform: translateX(-850px);
+  }
+  to {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}

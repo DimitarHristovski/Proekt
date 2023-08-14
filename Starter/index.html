@@ -30,6 +30,7 @@
                 <div class="items flex items-end flex-col py-2 m-3 z-10">
                     <h1 class="text-right f-size font-fam">Join as Artist</h1>
                     <select id="artists" class="flex">
+                        <!-- naprajgo classname ne id i klaj go na dvete -->
                         <option value="Choose">Choose</option>
                     </select>
                 </div>
@@ -57,20 +58,24 @@
         <section class="flex flex-col">
             <div class="banner-hero flex py-8 justify-between items-center">
                 <h1 class="text-2xl">Looking for a masterpiece?</h1>
-                <button class="btn-custom m-3 p-1" onclick="navigateTo('visitor-listing')">Find one now!</button>
+                <a href="#visitor-listing" onclick="navigateTo('visitor-listing')"> <button
+                        class="btn-custom m-3 p-1">Find one
+                        now!</button></a>
             </div>
         </section>
 
         <section class="flex flex-col py-8 bg-darkcream overflow-hidden">
-            <!-- <div class="mx-auto">
-                <div class="slider flex justify-between" id="first-row">
+
+
+
+            <div class="images flex flex-col">
+                <div class="top flex py-2">
+
                 </div>
+                <div class="bottom flex py-2">
 
-                <div class="slider flex justify-between mt-8" id="second-row">
                 </div>
-            </div> -->
-
-
+            </div>
 
 
         </section>
@@ -284,14 +289,14 @@
     </div>
     <div id="artist-section" class="section hidden mx-auto bg-cream flex flex-col">
 
-        <nav class="bg-cream shadow py-2">
+        <nav class="bg-cream shadow py-2 ">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between  ">
-                <a href="#" class="flex items-center">
+                <a href="#landing-page" class="flex items-center">
                     <img src="./images/76974-[Converted] 1.png" class="logoSize mr-3" alt=" Logo"
                         onclick="navigateTo('landing-page')" />
 
                 </a>
-                <p id="appendedName" class=" text-2xl font-semibold whitespace-nowrap dark:text-white font-fam">
+                <p class=" text-2xl appendedArtist font-semibold whitespace-nowrap dark:text-white font-fam">
                     Artist
                     Name</p>
                 <button data-collapse-toggle="navbar-multi-level" type="button"
@@ -307,22 +312,24 @@
                 <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
                     <ul class="flex flex-col font-medium bg-cream2 text-center">
                         <li>
-                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
-                                onclick="navigateTo('artist-section')">Home</a>
+                            <a href="#artist-section" class="block py-2 pl-3 pr-4 text-white bg-cream2"
+                                aria-current="page" onclick="navigateTo('artist-section')"
+                                data-modal-hide="extralarge-modal">Home</a>
                         </li>
                         <li>
-                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
-                                onclick="navigateTo('artist-item')">Items</a>
+                            <a href="#artist-item" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                onclick="navigateTo('artist-item')" data-modal-hide="extralarge-modal">Items</a>
                         </li>
                         <li>
-                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
-                                onclick="navigateTo('auction-page')">Auction</a>
+                            <a href="#auction-page" class="block py-2 pl-3 pr-4 text-white bg-cream2"
+                                aria-current="page" onclick="navigateTo('auction-page')"
+                                data-modal-hide="extralarge-modal">Auction</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="item-data bg-darkcream flex flex-col ">
+        <div class="item-data bg-darkcream flex flex-col py-6">
             <div class="top-container flex justify-between text-white p-3">
 
                 <div class="items-sold p-5 text-center bg-cream2 w-1/2 m-2">
@@ -343,7 +350,7 @@
 
             </div>
         </div>
-        <div class="chart-data">
+        <div class="chart-data py-6 ">
             <div class="chart-header">
                 <h1 class="text-cream2">Display my income for last</h1>
                 <div class="button-group flex justify-center">
@@ -363,23 +370,27 @@
 
                         1 year
                     </button></div>
+                <div class="chart">
+                    <canvas id="myChart"></canvas>
+                </div>
 
             </div>
-            <canvas id="myChart"></canvas>
         </div>
+
     </div>
 
     <div id="artist-item" class="section hidden mx-auto bg-cream flex flex-col">
 
-        <nav class="bg-cream shadow">
+        <nav class="bg-cream shadow ">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-3">
-                <a href="#" class="flex items-center">
-                    <img src="./images/76974-[Converted] 1.png" class="h-8 mr-3" alt=" Logo"
+                <a href="#landing-page" class="flex items-center">
+                    <img src="./images/76974-[Converted] 1.png" class="logoSize mr-3" alt=" Logo"
                         onclick="navigateTo('landing-page')" />
-                    <span id="appendedName"
-                        class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Artist
-                        Name</span>
+
                 </a>
+                <p class="self-center font-fam appendedArtist text-2xl font-semibold whitespace-nowrap dark:text-white">
+                    Artist
+                    Name</p>
                 <button data-collapse-toggle="nav-links" type="button"
                     class="inline-flex navy items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="nav-links" aria-expanded="false" onclick="toggleNavigation()">
@@ -393,16 +404,18 @@
                 <div id="nav-links" class="hidden w-full md:block md:w-auto">
                     <ul class="flex flex-col font-medium bg-cream2 text-center">
                         <li>
-                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
-                                onclick="navigateTo('artist-section')">Home</a>
+                            <a href="#artist-section" class="block py-2 pl-3 pr-4 text-white bg-cream2"
+                                aria-current="page" onclick="navigateTo('artist-section')"
+                                data-modal-hide="extralarge-modal">Home</a>
                         </li>
                         <li>
-                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
-                                onclick="navigateTo('artist-item')">Items</a>
+                            <a href="#artist-item" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                onclick="navigateTo('artist-item')" data-modal-hide="extralarge-modal">Items</a>
                         </li>
                         <li>
-                            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
-                                onclick="navigateTo('auction-page')">Auction</a>
+                            <a href="#auction-page" class="block py-2 pl-3 pr-4 text-white bg-cream2"
+                                aria-current="page" onclick="navigateTo('auction-page')"
+                                data-modal-hide="extralarge-modal">Auction</a>
                         </li>
                     </ul>
                 </div>
@@ -411,23 +424,26 @@
 
         <div class="container bg-darkcream py-3">
             <div class="addNewItem bg-cream flex justify-center py-3">
-                <button type="button" class="py-5 text-center itembutton block " data-modal-target="extralarge-modal"
-                    data-modal-toggle="extralarge-modal">+Add new item</button>
+                <button type="button" type="submit" class="py-5 text-center itembutton block "
+                    data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal">+Add new item</button>
             </div>
+            <div class="cards"></div>
         </div>
 
         <div id="extralarge-modal" tabindex="-1"
             class="fixed maxSize top-0 left-0 right-0 z-50 hidden w-full  overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full slide">
             <div class="relative w-full max-w-7xl max-h-full">
-                <nav class="bg-cream shadow">
+                <nav class="bg-cream shadow ">
                     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-3">
-                        <a href="#" class="flex items-center">
-                            <img src="./images/76974-[Converted] 1.png" class="h-8 mr-3" alt=" Logo"
+                        <a href="#landing-page" class="flex items-center" data-modal-hide="extralarge-modal">
+                            <img src="./images/76974-[Converted] 1.png" class="logoSize mr-3 z-50" alt=" Logo"
                                 onclick="navigateTo('landing-page')" />
-                            <span id="appendedName"
-                                class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Artist
-                                Name</span>
+
                         </a>
+                        <p
+                            class="self-center font-fam appendedArtist text-2xl font-semibold whitespace-nowrap dark:text-white">
+                            Artist
+                            Name</p>
                         <button data-collapse-toggle="nav-link" type="button"
                             class="inline-flex navy items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                             aria-controls="nav-link" aria-expanded="false" onclick="toggleNavigation()">
@@ -441,17 +457,18 @@
                         <div id="nav-link" class="hidden w-full md:block md:w-auto">
                             <ul class="flex flex-col font-medium bg-cream2 text-center">
                                 <li>
-                                    <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
-                                        onclick="navigateTo('artist-section')"
+                                    <a href="#artist-section" class="block py-2 pl-3 pr-4 text-white bg-cream2"
+                                        aria-current="page" onclick="navigateTo('artist-section')"
                                         data-modal-hide="extralarge-modal">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
-                                        onclick="navigateTo('artist-item')" data-modal-hide="extralarge-modal">Items</a>
+                                    <a href="#artist-item" class="block py-2 pl-3 pr-4 text-white bg-cream2"
+                                        aria-current="page" onclick="navigateTo('artist-item')"
+                                        data-modal-hide="extralarge-modal">Items</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
-                                        onclick="navigateTo('auction-page')"
+                                    <a href="#auction-page" class="block py-2 pl-3 pr-4 text-white bg-cream2"
+                                        aria-current="page" onclick="navigateTo('auction-page')"
                                         data-modal-hide="extralarge-modal">Auction</a>
                                 </li>
                             </ul>
@@ -461,16 +478,13 @@
                 <!-- Modal content -->
                 <div class="relative text-white bg-brown ">
                     <!-- Modal header -->
-                    <div class="flex items-center  justify-between p-5 border-b rounded-t dark:border-gray-600">
-                        <h3 class="text-xl font-medium text-white">
-                            Add new item
-                        </h3>
+                    <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-medium text-white">Add new item</h3>
 
-
-                        <div class="flex items-center "><label for="checkbox" class="mx-2">Is
-                                published</label><input type="checkbox">
+                        <div class="flex items-center">
+                            <label for="isPublished" class="mx-2">Is published</label>
+                            <input type="checkbox" id="isPublished" />
                         </div>
-
                     </div>
                     <!-- Modal body -->
                     <div class="p-6 space-y-6">
@@ -478,53 +492,60 @@
                         <div>
                             <label for="input-field-1" class="text-white">Title</label>
                             <input type="text" id="input-field-1"
-                                class="bg-brown text-white w-full h-6 border-color-white">
+                                class="bg-brown text-white w-full h-6 border-color-white" />
                         </div>
 
                         <!-- Input field 2 -->
                         <div>
-                            <label for="input-field-2" class="text-white">Description</label>
+                            <label for="text-field" class="text-white">Description</label>
                             <input type="text" id="text-field"
-                                class="bg-brown text-white w-full h-10 border-color-white">
+                                class="bg-brown text-white w-full h-10 border-color-white" />
                         </div>
 
                         <div class="inputPair flex items-center w-full justify-between">
                             <!-- Input field 3 -->
                             <div class="flex flex-col">
-                                <label for="input-field-3" class="text-white ">Type</label>
+                                <label for="input-field-3" class="text-white">Type</label>
                                 <input type="text" id="input-field-3"
-                                    class="bg-brown text-white customwidth h-6 border-color-white ">
+                                    class="bg-brown text-white customwidth h-6 border-color-white" />
                             </div>
 
                             <!-- Input field 4 -->
                             <div class="flex flex-col">
                                 <label for="input-field-4" class="text-white">Price</label>
                                 <input type="text" id="input-field-4"
-                                    class="bg-brown text-white customwidth h-6 border-color-white ">
+                                    class="bg-brown text-white customwidth h-6 border-color-white" />
                             </div>
                         </div>
-
 
                         <!-- Input field 5 -->
                         <div class="flex flex-col">
                             <label for="input-field-5" class="text-white">Image URL</label>
                             <input type="text" id="input-field-5"
-                                class="bg-brown text-white w-full h-10 border-color-white">
+                                class="bg-brown text-white w-full h-10 border-color-white" />
                         </div>
                         <p class="text-center">or</p>
-                        <div class="PhotoDiv flex items-center justify-center text-center  m-auto "><img class=""
-                                src="./images/Vector.png" alt="photo"></div>
+                        <a class="PhotoDiv flex items-center justify-center text-center m-auto"
+                            onclick="navigateTo('Photo-camera')" data-modal-hide="extralarge-modal">
+                            <img class="" src="./images/Vector.png" alt="photo" data-modal-target="photo-modal"
+                                data-modal-toggle="photo-modal" />
+                        </a>
                     </div>
 
                     <!-- Modal footer -->
                     <div
                         class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600 justify-between">
+                        <button id="addItemButton" data-modal-hide="extralarge-modal" type="button"
+                            class="text-white bg-bl-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Add New Item
+                        </button>
                         <button data-modal-hide="extralarge-modal" type="button"
-                            class="text-white bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
-                            New Item</button>
-                        <button data-modal-hide="extralarge-modal" type="button"
-                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                            Cancel
+                        </button>
                     </div>
+
+                    
                 </div>
             </div>
 
@@ -532,7 +553,71 @@
 
 
     </div>
+    <div id="Photo-camera" class="section hidden mx-auto bg-cream flex flex-col">
+        <nav class="bg-cream shadow ">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-3">
+                <a href="#landing-page" class="flex items-center">
+                    <img src="./images/76974-[Converted] 1.png" class="logoSize mr-3 z-50" alt=" Logo"
+                        onclick="navigateTo('landing-page')" />
 
+                </a>
+                <p class="self-center font-fam appendedArtist text-2xl font-semibold whitespace-nowrap dark:text-white">
+                    Artist
+                    Name</p>
+                <button data-collapse-toggle="navs-links" type="button"
+                    class="inline-flex navy items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navs-links" aria-expanded="false" onclick="toggleNavigation()">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div id="navs-links" class="hidden w-full md:block md:w-auto">
+                    <ul class="flex flex-col font-medium bg-cream2 text-center">
+                        <li>
+                            <a href="#artist-section" class="block py-2 pl-3 pr-4 text-white bg-cream2"
+                                aria-current="page" onclick="navigateTo('artist-section')"
+                                data-modal-hide="modals">Home</a>
+                        </li>
+                        <li>
+                            <a href="#artist-item" class="block py-2 pl-3 pr-4 text-white bg-cream2" aria-current="page"
+                                onclick="navigateTo('artist-item')" data-modal-hide="modals">Items</a>
+                        </li>
+                        <li>
+                            <a href="#auction-page" class="block py-2 pl-3 pr-4 text-white bg-cream2"
+                                aria-current="page" onclick="navigateTo('auction-page')"
+                                data-modal-hide="modals">Auction</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="Photo">
+
+            <div class="relative  text-white bg-brown div-height">
+
+                <!-- Modal body -->
+                <div class="p-6 space-y-6 flex-1 h-4/5">
+
+                    <a class="PhotoDiv photodiv-size flex items-center justify-center text-center  m-auto "
+                        data-modal-hide="photo-modal"><img class="" src="./images/Vector.png" alt="photo"
+                            data-modal-target="photo-modal" data-modal-toggle="photo-modal"></a>
+                </div>
+
+                <!-- Modal footer -->
+                <div
+                    class="flex h-1/5  items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600 justify-between">
+
+                    <button data-modal-hide="photo-modal" type="button"
+                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 m-auto">Capture</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
     <div id="auction-page" class="section hidden mx-auto bg-cream">fdsfsfd</div>
 
 
@@ -548,7 +633,7 @@
     <script src="./js/pages/main-filter.js"></script>
     <script src="./js/pages/chart.js"></script>
     <script src="./js/pages/artist-items.js"></script>
-
+    <script src="./js/pages/artists-Add-Items.js"></script>
 </body>
 
 </html>

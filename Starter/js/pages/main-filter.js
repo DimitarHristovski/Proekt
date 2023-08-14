@@ -42,7 +42,6 @@ function main() {
 
 main();
 
-// Event listeners for the filters
 const titleFilter = document.getElementById("title-filter");
 const artistsFilter = document.getElementById("artists-filter");
 const minPriceFilter = document.getElementById("min-price");
@@ -68,16 +67,13 @@ function addArtistOptions() {
   });
 }
 
-// Call the addArtistOptions function to populate the artists
 addArtistOptions();
 
 function addTitleOptions() {
   const titleFilter = document.getElementById("title-filter");
 
-  // Extract unique item titles from the items array
   const uniqueTitles = [...new Set(items.map((item) => item.title))];
 
-  // Create and append options for each item title
   uniqueTitles.forEach((title) => {
     const option = document.createElement("option");
     option.value = title;
@@ -86,10 +82,7 @@ function addTitleOptions() {
   });
 }
 
-// Call the addTitleOptions function to populate the titles
 addTitleOptions();
-
-// ... Your existing code ...
 
 function resetFilters() {
   const titleFilter = document.getElementById("title-filter");
@@ -98,15 +91,11 @@ function resetFilters() {
   const maxPriceFilter = document.getElementById("max-price");
   const typeFilter = document.getElementById("type-filter");
 
-  // Reset all filter options to their default values
   titleFilter.value = "Choose";
   artistsFilter.value = "Choose";
   minPriceFilter.value = "";
   maxPriceFilter.value = "";
   typeFilter.value = "Choose";
 
-  // Reapply the filters
   filterItems();
 }
-
-// ... Rest of your JavaScript code ...
