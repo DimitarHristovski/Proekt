@@ -23,11 +23,10 @@ function fetchAndPopulateArtists() {
         selectedPerson = selectedName;
 
         let personItems = JSON.parse(localStorage.getItem("artistsItems"));
-
+        console.log(personItems);
         artistItems = personItems.filter(
           (item) => item.artist === selectedPerson
         );
-
         const totalItemsSoldElement = document.getElementById("totalItemsSold");
         const totalIncomeElement = document.getElementById("totalIncome");
         const itemsPublish = itemsPublished(artistItems);

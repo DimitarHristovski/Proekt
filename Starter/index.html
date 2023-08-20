@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./assets/css/slider.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
+    <meta name="author" content="Dimitar Hristovski">
+    <link rel="icon" type="image/png" href="./images/76974-[Converted] 1.png">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.23/dist/css/uikit.min.css" />
 
@@ -287,7 +289,7 @@
         </div>
 
     </div>
-    <div id="artist-section" class="section hidden mx-auto bg-cream flex flex-col">
+    <div id="artist-section" class="section hidden mx-auto bg-cream flex flex-col h-auto">
 
         <nav class="bg-cream shadow py-2 ">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between  ">
@@ -329,7 +331,7 @@
                 </div>
             </div>
         </nav>
-        <div class="item-data bg-darkcream flex flex-col py-6">
+        <div class="item-data bg-darkcream flex flex-col py-2">
             <div class="top-container flex justify-between text-white p-3">
 
                 <div class="items-sold p-5 text-center bg-cream2 w-1/2 m-2">
@@ -350,9 +352,9 @@
 
             </div>
         </div>
-        <div class="chart-data py-6 ">
-            <div class="chart-header">
-                <h1 class="text-cream2">Display my income for last</h1>
+        <div class="chart-data py-2 ">
+            <div class="chart-header ">
+                <h1 class="text-cream text-xl  py-1">Display my income for last</h1>
                 <div class="button-group flex justify-center">
                     <button id="last7" class="p-1 text-center text-white bg-cream2 w-1/6 m-2">
 
@@ -370,7 +372,7 @@
 
                         1 year
                     </button></div>
-                <div class="chart">
+                <div class="chart ">
                     <canvas id="myChart"></canvas>
                 </div>
 
@@ -379,7 +381,7 @@
 
     </div>
 
-    <div id="artist-item" class="section hidden mx-auto bg-cream flex flex-col">
+    <div id="artist-item" class="section hidden mx-auto bg-cream flex flex-col div-height">
 
         <nav class="bg-cream shadow ">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-3">
@@ -422,14 +424,19 @@
             </div>
         </nav>
 
-        <div class="container bg-darkcream py-3">
+        <div class="container bg-darkcream py-3 h-auto ">
             <div class="addNewItem bg-cream flex justify-center py-3">
                 <button type="button" type="submit" class="py-5 text-center itembutton block "
                     data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal">+Add new item</button>
             </div>
-            <div class="cards"></div>
-        </div>
 
+        </div>
+        <div class="cards ">
+
+
+
+
+        </div>
         <div id="extralarge-modal" tabindex="-1"
             class="fixed maxSize top-0 left-0 right-0 z-50 hidden w-full  overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full slide">
             <div class="relative w-full max-w-7xl max-h-full">
@@ -475,9 +482,7 @@
                         </div>
                     </div>
                 </nav>
-                <!-- Modal content -->
-                <div class="relative text-white bg-brown ">
-                    <!-- Modal header -->
+                <div class="relative text-white bg-brown z-50">
                     <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-xl font-medium text-white">Add new item</h3>
 
@@ -486,43 +491,46 @@
                             <input type="checkbox" id="isPublished" />
                         </div>
                     </div>
-                    <!-- Modal body -->
                     <div class="p-6 space-y-6">
-                        <!-- Input field 1 -->
                         <div>
-                            <label for="input-field-1" class="text-white">Title</label>
-                            <input type="text" id="input-field-1"
-                                class="bg-brown text-white w-full h-6 border-color-white" />
+                            <label for="Title" class="text-white">Title</label>
+                            <input type="text" id="Title"
+                                class="card-title bg-brown text-white w-full h-6 border-color-white" required />
                         </div>
 
-                        <!-- Input field 2 -->
                         <div>
-                            <label for="text-field" class="text-white">Description</label>
-                            <input type="text" id="text-field"
-                                class="bg-brown text-white w-full h-10 border-color-white" />
+                            <label for="Description" class="text-white">Description</label>
+                            <input type="text" id="Description"
+                                class="card-description bg-brown text-white w-full h-10 border-color-white" required />
                         </div>
 
                         <div class="inputPair flex items-center w-full justify-between">
-                            <!-- Input field 3 -->
                             <div class="flex flex-col">
-                                <label for="input-field-3" class="text-white">Type</label>
-                                <input type="text" id="input-field-3"
-                                    class="bg-brown text-white customwidth h-6 border-color-white" />
+                                <label for="Type" class="text-white">Type</label>
+
+                                <select id="Type" aria-placeholder="Label" class="bg-brown border-color-white" required>
+                                    <option value="Choose">Choose</option>
+                                    <!-- Add options for each item type -->
+                                    <option value="painting">Painting</option>
+                                    <option value="sculpture">Sculpture</option>
+                                    <option value="digital">Digital</option>
+                                    <option value="custom">custom</option>
+
+                                </select>
                             </div>
 
-                            <!-- Input field 4 -->
                             <div class="flex flex-col">
-                                <label for="input-field-4" class="text-white">Price</label>
-                                <input type="text" id="input-field-4"
-                                    class="bg-brown text-white customwidth h-6 border-color-white" />
+                                <label for="Price" class="text-white">Price</label>
+                                <input type="number" id="Price"
+                                    class="card-price bg-brown text-white customwidth h-6 border-color-white"
+                                    required />
                             </div>
                         </div>
 
-                        <!-- Input field 5 -->
                         <div class="flex flex-col">
-                            <label for="input-field-5" class="text-white">Image URL</label>
-                            <input type="text" id="input-field-5"
-                                class="bg-brown text-white w-full h-10 border-color-white" />
+                            <label for="Img-Url" class="text-white">Image URL</label>
+                            <input type="text" id="Img-Url"
+                                class="bg-brown text-white w-full h-10 border-color-white imageUrls" required />
                         </div>
                         <p class="text-center">or</p>
                         <a class="PhotoDiv flex items-center justify-center text-center m-auto"
@@ -532,20 +540,22 @@
                         </a>
                     </div>
 
-                    <!-- Modal footer -->
                     <div
-                        class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600 justify-between">
+                        class=" flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600 justify-between ">
                         <button id="addItemButton" data-modal-hide="extralarge-modal" type="button"
-                            class="text-white bg-bl-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            class=" text-white  bg-red-500 bg-bl-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Add New Item
                         </button>
-                        <button data-modal-hide="extralarge-modal" type="button"
+                        <button id="saveChangesButton" data-modal-hide="extralarge-modal" type="button"
+                            style="display: none;">Save Changes</button>
+
+                        <button id="cancelButton" data-modal-hide="extralarge-modal" type="button"
                             class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                             Cancel
                         </button>
                     </div>
 
-                    
+
                 </div>
             </div>
 
@@ -598,30 +608,58 @@
 
             <div class="relative  text-white bg-brown div-height">
 
-                <!-- Modal body -->
+
                 <div class="p-6 space-y-6 flex-1 h-4/5">
 
-                    <a class="PhotoDiv photodiv-size flex items-center justify-center text-center  m-auto "
-                        data-modal-hide="photo-modal"><img class="" src="./images/Vector.png" alt="photo"
-                            data-modal-target="photo-modal" data-modal-toggle="photo-modal"></a>
+
+                    <video id="camera" autoplay></video>
+
                 </div>
 
-                <!-- Modal footer -->
+
                 <div
                     class="flex h-1/5  items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600 justify-between">
 
-                    <button data-modal-hide="photo-modal" type="button"
+                    <button id="captureButton" data-modal-hide="Photo-modal" type="button"
+                        data-modal-target="extralarge-modal" data-modal-toggle="extralarge-modal"
+                        onclick="navigateTo('artist-item')"
                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 m-auto">Capture</button>
                 </div>
+
             </div>
 
 
         </div>
     </div>
-    <div id="auction-page" class="section hidden mx-auto bg-cream">fdsfsfd</div>
+    <div id="auction-page" class="section hidden mx-auto bg-cream flex flex-col">
+        <header class="flex  flex-row-reverse justify-between items-center py-4 px-6 shadow">
+            <img class="h-8" src="./images/ant-design_home-filled.svg" alt="logo" onclick="navigateTo('auction-page')">
+            <nav class="text-center " id="navbar">
+                <h2 class="font-fam text-xl">Street artists</h2>
+            </nav>
+            <a href="#landing-page" onclick="navigateTo('landing-page')">
+                <img class="logoSize" src="./images/76974-[Converted] 1.png" alt="logo">
+            </a>
+        </header>
+        <section class="auctions py-6">
+
+        </section>
+        <div class="auction-action py-6">
+            <div class="timer">
+                <h2>Time Left: <span class="time-left">0:00</span></h2>
+            </div>
+            <form id="bidForm">
+                <label for="bidAmount">Bid Amount($)</label>
+                <input type="number" name="bidAmount" id="bidAmount" required>
+                <button id="confirmBid">Bid</button>
+            </form>
+            <ul class="all-bids-list"></ul>
+            <h2>Auction Done !</h2>
+        </div>
+    </div>
 
 
-
+    <h1 class="desktop-text font-fam container f-size flex justify-center items-center">Mobile Only</h1>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -634,6 +672,189 @@
     <script src="./js/pages/chart.js"></script>
     <script src="./js/pages/artist-items.js"></script>
     <script src="./js/pages/artists-Add-Items.js"></script>
+    <script src="./js/pages/auctioning.js"></script>
+
+
+
+    <script>
+        function auctionPage() {
+            const timer = document.querySelector(".timer");
+            const timeLeft = document.querySelector(".time-left");
+            const bidForm = document.querySelector("#bidForm");
+            const confirmBidBtn = document.querySelector("#confirmBid");
+            const bidAmountInput = document.querySelector("#bidAmount");
+
+            let time;
+            let timerInterval;
+            console.log("Starting auctionPage function...");
+
+            if (localStorage.getItem("auctionTimer") !== null) {
+                time = +localStorage.getItem("auctionTimer");
+            } else {
+                time = 120;
+                localStorage.setItem("auctionTimer", time);
+                time = +localStorage.getItem("auctionTimer");
+            }
+
+            // Check user type and bidding status, and set initial display
+            if (localStorage.getItem("userType") == "artist") {
+                bidForm.style.display = "none";
+            } else if (localStorage.getItem("noBid") !== null) {
+                confirmBidBtn.disabled = true;
+                bidAmountInput.value = "";
+            } else {
+                bidForm.style.display = "block";
+            }
+
+            // Other variables and element selections...
+
+            // Check user type and bidding status, and set initial display
+            if (localStorage.getItem("userType") == "artist") {
+                bidForm.style.display = "none";
+            } else if (localStorage.getItem("noBid") !== null) {
+                confirmBidBtn.disabled = true;
+                bidAmountInput.value = "";
+            } else {
+                bidForm.style.display = "block";
+            }
+
+            // Check if there are items on auction
+            if (itemsOnAuction.length >= 1) {
+                document.querySelector(".live-auctioning").style.display = "block";
+
+                auctionInfo.classList.add("d-none");
+                auctionActions.classList.remove("d-none");
+                auctionCardContainer.classList.remove("d-none");
+                currentBiddingItem = itemsOnAuction[0];
+                let initialBidPrice = Math.floor(itemsOnAuction[0].price / 2);
+                bidAmountInput.min = initialBidPrice;
+
+                // Create card elements for each item on auction
+                itemsOnAuction.forEach((item) => {
+                    createCard(item);
+                });
+
+                // Initialize auction page
+                initAuctionPage();
+            } else {
+                document.querySelector(".live-auctioning").style.display = "none";
+
+                auctionInfo.classList.remove("d-none");
+                auctionCardContainer.classList.add("d-none");
+                auctionActions.classList.add("d-none");
+            }
+            console.log("Finished initializing auctionPage.");
+
+            function initAuctionPage() {
+                // Other code for initializing auction page
+
+                // Initialize timer with initial time
+                initTimer(time);
+
+                bidForm.removeEventListener("submit", onBidHandler);
+                bidForm.addEventListener("submit", onBidHandler);
+            }
+
+            function initTimer(initialTime) {
+                time = initialTime;
+
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                }
+
+                updateTimerDisplay(time);
+
+                timerInterval = setInterval(() => {
+                    if (time <= 0) {
+                        clearInterval(timerInterval);
+                        // Other code for handling the end of auction
+                        return;
+                    }
+
+                    time--;
+                    localStorage.setItem("auctionTimer", time);
+                    updateTimerDisplay(time);
+                }, 1000);
+            }
+
+            function updateTimerDisplay(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                timeLeft.textContent = `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+            }
+
+            function onBidHandler(e) {
+                e.preventDefault();
+                const li = document.createElement("li");
+                li.classList.add("me");
+                let p = document.createElement("p");
+                p.innerText = `I bid ${bidAmountInput.value}`;
+                li.appendChild(p);
+
+                allBidsUl.appendChild(li);
+                allBidsData.push(bidAmountInput.value);
+                localStorage.setItem("allBidsData", JSON.stringify(allBidsData));
+
+                makeBid(bidAmountInput.value).then((data) => {
+                    const {
+                        isBidding,
+                        bidAmount
+                    } = data;
+
+                    if (isBidding) {
+                        initTimer(60);
+                        const li = document.createElement("li");
+                        const p = document.createElement("p");
+                        p.innerText = `I bid ${bidAmount}`;
+                        li.classList.add("them");
+                        li.appendChild(p);
+                        allBidsUl.append(li);
+
+                        allBidsData.push(bidAmount);
+                        localStorage.setItem("allBidsData", JSON.stringify(allBidsData));
+
+                        bidAmountInput.setAttribute("min", bidAmount + 10);
+                        bidAmountInput.value = bidAmount + 10;
+                    } else {
+                        confirmBidBtn.setAttribute("disabled", "");
+                        const li = document.createElement("li");
+                        const p = document.createElement("p");
+                        p.innerText = `Ah... You won... I'm done`;
+                        li.classList.add("them");
+                        li.appendChild(p);
+                        allBidsUl.append(li);
+                        localStorage.setItem("noBid", "true");
+                    }
+                });
+            }
+            initTimer(time);
+
+            bidForm.removeEventListener("submit", onBidHandler);
+            bidForm.addEventListener("submit", onBidHandler);
+        }
+
+
+
+
+        function makeBid(amount) {
+            const url = "https://projects.brainster.tech/bidding/api";
+            const data = {
+                amount
+            };
+            console.log("Making bid with amount:", amount);
+
+            return fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                referrerPolicy: "origin-when-cross-origin",
+                body: JSON.stringify(data),
+            }).then((res) => res.json());
+
+        }
+    </script>
+
 </body>
 
 </html>

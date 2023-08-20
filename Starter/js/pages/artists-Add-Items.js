@@ -3,13 +3,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const cardContainer = document.querySelector(".cards");
 
   addButton.addEventListener("click", function () {
-    const titleInput = document.getElementById("input-field-1");
-    const descriptionInput = document.getElementById("text-field");
-    const typeInput = document.getElementById("input-field-3");
-    const priceInput = document.getElementById("input-field-4");
-    const imageURLInput = document.getElementById("input-field-5");
+    const titleInput = document.getElementById("Title");
+    const descriptionInput = document.getElementById("Description");
+    const typeInput = document.getElementById("Type");
+    const priceInput = document.getElementById("Price");
+    const imageURLInput = document.getElementById("Img-Url");
     const isPublishedCheckbox = document.getElementById("isPublished");
+    if (
+      !titleInput.value ||
+      !descriptionInput.value ||
+      typeInput.value === "Choose" ||
+      !priceInput.value ||
+      !imageURLInput.value
+    ) {
+      event.preventDefault(); // Prevent form submission
 
+      // Display an error message or highlight the required fields
+      alert("Please fill out all required fields.");
+      return; // Add a return statement to stop further execution
+    }
     const newItem = {
       title: titleInput.value,
       description: descriptionInput.value,
@@ -17,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       price: priceInput.value,
       imageURL: imageURLInput.value,
       isPublished: isPublishedCheckbox.checked,
+      dateCreated: new Date().toISOString(), // Add the current date
     };
 
     const existingItems = JSON.parse(localStorage.getItem("items")) || [];
@@ -36,6 +49,91 @@ document.addEventListener("DOMContentLoaded", function () {
     isPublishedCheckbox.checked = false;
   });
 
+  const video = document.getElementById("camera");
+  const captureButton = document.getElementById("captureButton");
+  const photoDiv = document.querySelector(".PhotoDiv");
+  const imageUrlsInput = document.querySelector(".imageUrls");
+
+  // Access user's camera and display the feed
+  function startCamera() {
+    navigator.mediaDevices
+      .getUserMedia({
+        video: true,
+      })
+      .then((stream) => {
+        video.srcObject = stream;
+      })
+      .catch((error) => {
+        console.error("Error accessing camera:", error);
+      });
+  }
+
+  // Capture image from camera stream
+  function captureImage() {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    // Resize the captured image
+    const resizedCanvas = document.createElement("canvas");
+    const resizedContext = resizedCanvas.getContext("2d");
+    const targetWidth = 200; // Set the target width
+    const targetHeight = (canvas.height / canvas.width) * targetWidth;
+    resizedCanvas.width = targetWidth;
+    resizedCanvas.height = targetHeight;
+    resizedContext.drawImage(canvas, 0, 0, targetWidth, targetHeight);
+
+    const imageURL = resizedCanvas.toDataURL("image/jpeg"); // Convert to base64 URL
+
+    const timestamp = new Date().getTime();
+    localStorage.setItem(`image_${timestamp}`, imageURL);
+
+    const imageUrls = JSON.parse(imageUrlsInput.value || "[]");
+    imageUrls.push(imageURL);
+//So brisnje na [" pred data vo inputot kaj add item slikata se appendnuva nz zosto greska vadi nz
+    const cleanedImageUrls = imageUrls.map((url) =>
+      url.replace(/^\[|\]$/g, "")
+    );
+
+    imageUrlsInput.value = JSON.stringify(cleanedImageUrls);
+    console.log(imageURL);
+  }
+
+  captureButton.addEventListener("click", () => {
+    captureImage();
+  });
+
+  // Start camera when clicking on the PhotoDiv
+  photoDiv.addEventListener("click", () => {
+    startCamera();
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const addItemForm = document.querySelector("#addItemForm");
+    addItemForm.addEventListener("submit", function (event) {
+      const titleInput = document.querySelector("#Title");
+      const descriptionInput = document.querySelector("#Description");
+      const typeInput = document.querySelector("#Type");
+      const priceInput = document.querySelector("#Price");
+      const imgUrlInput = document.querySelector("#Img-Url");
+
+      if (
+        !titleInput.value ||
+        !descriptionInput.value ||
+        typeInput.value === "Choose" ||
+        !priceInput.value ||
+        !imgUrlInput.value
+      ) {
+        event.preventDefault(); // Prevent form submission
+
+        // Display an error message or highlight the required fields
+        alert("Please fill out all required fields.");
+      }
+    });
+  });
+
   function createCard(item, container) {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -43,124 +141,157 @@ document.addEventListener("DOMContentLoaded", function () {
     card.style.borderRadius = "8px";
     card.style.padding = "10px";
     card.style.margin = "10px";
+    card.setAttribute("data-card-id", item.id);
 
-    const cardContent = document.createElement("div");
-    cardContent.classList.add(
-      "card-content",
-      "flex",
-      "justify-between",
+    card.innerHTML = `
+      <div class="card-content flex justify-between bg-cream flex-col" style="background-color: #FCEBD5;">
+        <img  class="card-image" src="${item.imageURL}"  alt="Item Image">
+        
+        <div class="titleDescContainer flex justify-between p-3 bg-cream">
+          <div class="left flex flex-col">
+            <h2 class="card-title f-size" style="font-family: 'Reenie Beanie', cursive;">${
+              item.title
+            }</h2>
+            <span class="date">${getItemDate(item.dateCreated)}</span>
+          </div>
+          <div class="right">
+            <p class="card-price" style="padding: 10px 16px; color: #FCEBD5; background-color: #A16A5E; border-radius: 10px;">$${
+              item.price
+            }</p>
+          </div>
+        </div>
+        
+        <div class="info-container flex flex-col p-3">
+          <p class="card-description">${item.description}</p>
+        </div>
+        
+        <div class="footer-container flex justify-between p-3 bg-brown">
+          <button class="text-white bg-blue-500 px-2 py-1 rounded sendToAuctionBtn">Send to Auction</button>
+          <button class="text-white bg-green-500 px-2 py-1 rounded publishBtn" >${
+            item.isPublished ? "Publish" : "Unpublish"
+          }</button>
+          <button class="text-white bg-red-500 px-2 py-1 rounded removeBtn">Remove</button>
+          <button class="text-brown-500 bg-white px-2 py-1 rounded border border-brown-500 editBtn">Edit</button>
+        </div>
+      </div>
+    `;
+    const sendAuctionBtn = card.querySelector(".sendToAuctionBtn");
+    const publishBtn = card.querySelector(".publishBtn");
+    const removeBtn = card.querySelector(".removeBtn");
+    const editBtn = card.querySelector(".editBtn");
+    card.setAttribute("data-card-id", item.id);
 
-      "bg-cream",
-      "flex-col"
-    );
-    cardContent.style.backgroundColor = "#FCEBD5";
-    card.appendChild(cardContent);
+    sendAuctionBtn.addEventListener("click", function () {
+      sendAuctionBtn.disabled = true;
+      sendAuctionBtn.id = item.id;
+      const auctionsContainer = document.querySelector(".auctions");
+      const cardImage = card.querySelector(".card-image");
+      const titleDescContainer = card.querySelector(".titleDescContainer");
+      const infoContainer = card.querySelector(".info-container");
 
-    const cardImage = document.createElement("img");
-    cardImage.classList.add("card-image");
-    cardImage.src = item.imageURL;
-    cardImage.alt = "Item Image";
-    cardContent.appendChild(cardImage);
+      auctionsContainer.appendChild(cardImage.cloneNode(true));
+      auctionsContainer.appendChild(titleDescContainer.cloneNode(true));
+      auctionsContainer.appendChild(infoContainer.cloneNode(true));
+      console.log("Sending item to auction:", item.auctionsContainer);
+      isAuctioning = true;
+      console.log("Sending item to auction:", item.auctionsContainer);
+    });
 
-    const titleDescContainer = document.createElement("div");
-    titleDescContainer.classList.add(
-      "titleDescContainer",
-      "flex",
-      "justify-between",
-      "p-3",
-      "bg-cream"
-    );
-    cardContent.appendChild(titleDescContainer);
+    publishBtn.addEventListener("click", function () {
+      item.isPublished = !item.isPublished;
+      publishBtn.textContent = item.isPublished ? "Unpublish" : "Publish";
+      console.log("Item publish status:", item.isPublished);
+    });
 
-    const left = document.createElement("div");
-    left.classList.add("left", "flex", "flex-col");
-    titleDescContainer.appendChild(left);
+    removeBtn.addEventListener("click", function () {
+      container.removeChild(card);
+      console.log("Removing item:", item.id);
+    });
 
-    const right = document.createElement("div");
-    right.classList.add("right");
-    titleDescContainer.appendChild(right);
+    editBtn.addEventListener("click", function () {
+      const modal = document.querySelector("#extralarge-modal");
+      modal.style.display = "block";
+      document.getElementById("addItemButton").style.display = "none";
+      document.getElementById("saveChangesButton").style.display = "block";
+      const titleInput = modal.querySelector("#Title");
+      const descriptionInput = modal.querySelector("#Description");
+      const typeInput = modal.querySelector("#Type");
+      const priceInput = modal.querySelector("#Price");
+      const imgUrlInput = modal.querySelector("#Img-Url");
+      const isPublishedInput = modal.querySelector("#isPublished");
 
-    const cardTitle = document.createElement("h2");
-    cardTitle.classList.add("card-title", "f-size");
-    cardTitle.style.fontFamily = "'Reenie Beanie', cursive";
-    cardTitle.textContent = item.title;
-    left.appendChild(cardTitle);
+      titleInput.value = item.title;
+      descriptionInput.value = item.description;
+      typeInput.value = item.type;
+      priceInput.value = item.price;
+      imgUrlInput.value = item.imageURL;
+      isPublishedInput.checked = item.isPublished;
 
-    const cardPrice = document.createElement("p");
-    cardPrice.classList.add("card-price");
+      isPublishedInput.disabled = false; // Enable isPublished checkbox for editing
 
-    cardPrice.style.padding = "10px 16px";
-    cardPrice.style.color = "#FCEBD5";
-    cardPrice.style.backgroundColor = "#A16A5E";
-    cardPrice.style.borderRadius = "10px";
-    cardPrice.textContent = item.price;
-    right.appendChild(cardPrice);
+      document
+        .getElementById("saveChangesButton")
+        .addEventListener("click", function () {
+          // Update the item properties with the edited values
+          item.title = titleInput.value;
+          item.description = descriptionInput.value;
+          item.type = typeInput.value;
+          item.price = priceInput.value;
+          item.imageURL = imgUrlInput.value;
+          item.isPublished = isPublishedInput.checked;
 
-    const infoContainer = document.createElement("div");
-    infoContainer.classList.add("info-container", "flex", "flex-col", "p-3");
-    cardContent.appendChild(infoContainer);
+          // Update the card content with the edited values
+          const card = document.querySelector(`[data-card-id="${item.id}"]`);
+          if (card) {
+            card.querySelector(".card-title").textContent = item.title;
+            card.querySelector(".card-description").textContent =
+              item.description;
+            const cardType = card.querySelectorAll(".card-type"); // Assuming .card-type is the class of the element displaying the card type
+            cardType.textContent = item.type;
+            const cardPrice = card.querySelector(".card-price");
+            cardPrice.textContent = item.price;
+            const cardImg = card.querySelector(".card-image");
+            cardImg.src = item.imageURL;
+            const publishBtn = card.querySelector(".publishBtn");
+            publishBtn.textContent = item.isPublished ? "Unpublish" : "Publish";
+          }
 
-    const cardDescription = document.createElement("p");
-    cardDescription.classList.add("card-description");
-    cardDescription.textContent = item.description;
-    infoContainer.appendChild(cardDescription);
+          // Close the modal
+          modal.style.display = "none";
+          document.getElementById("addItemButton").style.display = "block";
+          saveChangesButton.style.display = "none";
+        });
+    });
 
-    const footerContainer = document.createElement("div");
-    footerContainer.classList.add(
-      "footer-container",
-      "flex",
-      "justify-between",
-      "p-3",
-      "bg-brown"
-    );
-    cardContent.appendChild(footerContainer);
-
-    let sendAuctionBtn = document.createElement("button");
-    sendAuctionBtn.classList.add(
-      "text-white",
-      "bg-blue-500",
-      "px-2",
-      "py-1",
-      "rounded"
-    );
-    sendAuctionBtn.textContent = "Send to Auction";
-    footerContainer.appendChild(sendAuctionBtn);
-
-    let publishBtn = document.createElement("button");
-    publishBtn.classList.add(
-      "text-white",
-      "bg-green-500",
-      "px-2",
-      "py-1",
-      "rounded"
-    );
-    publishBtn.textContent = item.isPublished ? "Unpublish" : "Publish";
-    footerContainer.appendChild(publishBtn);
-
-    let removeBtn = document.createElement("button");
-    removeBtn.classList.add(
-      "text-white",
-      "bg-red-500",
-      "px-2",
-      "py-1",
-      "rounded"
-    );
-    removeBtn.textContent = "Remove";
-    footerContainer.appendChild(removeBtn);
-
-    let editBtn = document.createElement("button");
-    editBtn.classList.add(
-      "text-brown-500",
-      "bg-white",
-      "px-2",
-      "py-1",
-      "rounded",
-      "border",
-      "border-brown-500"
-    );
-    editBtn.textContent = "Edit";
-    footerContainer.appendChild(editBtn);
+    const cancelButton = document.getElementById("cancelButton");
+    addButton.addEventListener("click", function () {
+      modal.style.display = "block";
+      addButton.style.display = "none";
+      saveChangesButton.style.display = "none"; // Hide the Save Changes button
+      // Rest of your code to populate the form fields...
+    });
+    cancelButton.addEventListener("click", function () {
+      const modal = document.querySelector("#extralarge-modal");
+      modal.style.display = "none";
+    });
     container.appendChild(card);
-    console.log(card);
+  }
+
+  function getItemDate(date) {
+    // Parse the input date string into a JavaScript Date object
+    const parsedDate = new Date(date);
+
+    // Check if the parsed date is valid
+    if (isNaN(parsedDate)) {
+      return "Invalid Date";
+    }
+
+    // Extract day, month, and year components
+    const day = parsedDate.getDate();
+    const month = parsedDate.getMonth() + 1;
+    const year = parsedDate.getFullYear();
+
+    // Format the date as "dd.mm.yyyy"
+    return `${day}.${month}.${year}`;
   }
 });

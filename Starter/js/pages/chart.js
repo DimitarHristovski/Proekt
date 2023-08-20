@@ -1,24 +1,15 @@
-let selectedArtist = null;
-
-const uniqueArtists = [...new Set(items.map((item) => item.artist))];
-if (uniqueArtists.length > 0) {
-  selectedArtist = uniqueArtists[0];
-}
-
-function artistItemArray(artist) {
-  return items.filter((item) => item.artist === artist);
-}
-
-function updateChart(labels, salesData) {
-  const myChart = Chart.instances[0];
-  myChart.data.labels = labels;
-  myChart.data.datasets[0].data = salesData;
-  myChart.update();
+document.addEventListener("DOMContentLoaded", () => {
+  fetchAndPopulateArtists();
+  createChart();
+});
+function artistItemArray(artistItems) {
+  return items.filter((item) => item.artist === artistItems);
 }
 
 function createChart() {
+  const labels = [];
   const data = {
-    labels: [],
+    labels: labels,
     datasets: [
       {
         label: "Sales Amount",
@@ -37,22 +28,52 @@ function createChart() {
       indexAxis: "y",
     },
   };
-  new Chart(document.getElementById("myChart"), config);
-
-  document.querySelectorAll(".p-1").forEach((button) => {
-    button.addEventListener("click", () => {
-      if (selectedArtist) {
-        const days = parseInt(button.dataset.days);
-        const labels = getLastDays(days).dateLabel;
-        const salesData = getLastDays(days).salesData;
-        updateChart(labels, salesData);
-      }
-    });
+  const myChart = new Chart(document.getElementById("myChart"), config);
+  document.querySelector("#last7").addEventListener("click", () => {
+    const chartData = getLastDays(7);
+    updateChartData(myChart, chartData);
+    console.log("Updated chart data:", chartData);
   });
+
+  document.querySelector("#last14").addEventListener("click", () => {
+    const chartData = getLastDays(14);
+    updateChartData(myChart, chartData);
+    console.log("Updated chart data:", chartData);
+  });
+
+  document.querySelector("#last30").addEventListener("click", () => {
+    const chartData = getLastDays(30);
+    updateChartData(myChart, chartData);
+    console.log("Updated chart data:", chartData);
+  });
+
+  document.querySelector("#last365").addEventListener("click", () => {
+    const chartData = getDataForLastOneYear();
+    updateChartData(myChart, chartData);
+    console.log("Updated chart data:", chartData);
+  });
+
+  getDataForLastOneYear;
+  const initialChartData = getLastDays(7);
+  updateChartData(myChart, initialChartData);
+}
+
+function updateChartData(myChart, chartData) {
+  const soldData = artistItemArray(artistItems); // Use selectedPerson here
+
+  chartData.salesData = soldData.map((items) =>
+    items.reduce((sum, item) => sum + item.priceSold, 0)
+  );
+
+  myChart.data.labels = chartData.dateLabel;
+  myChart.data.datasets[0].data = chartData.salesData;
+  myChart.update();
 }
 
 function getDataForLastOneYear() {
-  const monthName = [
+  monthsLabel = [];
+  let monthsArray = [];
+  let monthName = new Array(
     "January",
     "February",
     "March",
@@ -64,88 +85,109 @@ function getDataForLastOneYear() {
     "September",
     "October",
     "November",
-    "December",
-  ];
-
-  const monthsArray = [];
+    "December"
+  );
   let d = new Date();
   d.setDate(1);
-  for (let i = 0; i <= 11; i++) {
+  for (i = 0; i <= 11; i++) {
     monthsArray.push(new Date(d));
     d.setMonth(d.getMonth() - 1);
   }
 
-  const monthsLabel = monthsArray.map(
-    (month) => `${monthName[month.getMonth()]} ${month.getFullYear()}`
+  monthsLabel = monthsArray.map(
+    (month) =>
+      `${monthName[new Date(month).getMonth()]} ${new Date(
+        month
+      ).getFullYear()}`
   );
 
-  const data = monthsArray.map((month) => {
-    const soldData = artistItemArray(selectedArtist).filter((item) =>
-      getMonths(item.dateSold, month)
-    );
-    return soldData.reduce((sum, item) => sum + item.priceSold, 0);
-  });
+  let data = [];
 
-  return {
+  monthsArray.forEach((day) => {
+    let soldData = artistItemArray(artistItems).filter((item) =>
+      getMonthstoCompare(item.dateSold, day)
+    );
+
+    data.push(soldData);
+  });
+  salesDataforEachDay = [];
+  data.forEach((array) => {
+    let sales = 0;
+    array.forEach((item) => {
+      sales = sales + item.priceSold;
+    });
+    salesDataforEachDay.push(sales);
+  });
+  chartData = {
     dateLabel: monthsLabel,
-    salesData: data,
+    salesData: salesDataforEachDay,
   };
+  return chartData;
 }
 
 function getLastDays(days) {
-  const previousDays = [];
-  const today = Date.parse(new Date());
-  const oneDay = 86400000;
+  let previousDays = [];
+  let today = Date.parse(new Date());
+  let oneDay = 86400000;
 
-  for (let i = 0; i < days; i++) {
-    const eachDay = oneDay * i;
-    const previousDay = new Date(today - eachDay);
+  for (let i = 0; days > i; i++) {
+    let eachDay = oneDay * i;
+    let previousDay = new Date(today - eachDay);
     previousDays.push(previousDay);
   }
 
-  const lastDays = previousDays.map((day) => day.toLocaleDateString("en-GB"));
+  let lastDays = previousDays.map(
+    (day) => `${day.toLocaleDateString("en-GB")}`
+  );
+  let data = [];
 
-  const data = previousDays.map((day) => {
-    const soldData = artistItemArray(selectedArtist).filter((item) =>
-      DatesCompare(item.dateSold, day)
+  previousDays.forEach((day) => {
+    let soldData = artistItemArray(artistItems).filter((item) =>
+      getDatestoCompare(item.dateSold, day)
     );
-    return soldData.reduce((sum, item) => sum + item.priceSold, 0);
+
+    data.push(soldData);
   });
-
-  return {
+  salesDataforEachDay = [];
+  data.forEach((array) => {
+    let sales = 0;
+    array.forEach((item) => {
+      sales = sales + item.priceSold;
+    });
+    salesDataforEachDay.push(sales);
+  });
+  chartData = {
     dateLabel: lastDays,
-    salesData: data,
+    salesData: salesDataforEachDay,
   };
+
+  return chartData;
 }
+function getMonthstoCompare(date1, date2) {
+  dateOne = new Date(date1);
+  dateTwo = new Date(date2);
 
-function getMonths(date1, date2) {
-  const dateOne = new Date(date1);
-  const dateTwo = new Date(date2);
-
-  return (
+  if (
     dateOne.getMonth() === dateTwo.getMonth() &&
     dateOne.getFullYear() === dateTwo.getFullYear()
-  );
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
-function DatesCompare(date1, date2) {
-  const dateOne = new Date(date1);
-  const dateTwo = new Date(date2);
+function getDatestoCompare(date1, date2) {
+  dateOne = new Date(date1);
+  dateTwo = new Date(date2);
 
-  return (
+  if (
     dateOne.getDate() === dateTwo.getDate() &&
     dateOne.getMonth() === dateTwo.getMonth() &&
     dateOne.getFullYear() === dateTwo.getFullYear()
-  );
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }
-
-function updateChart(labels, salesData) {
-  console.log("Updating chart with data:", labels, salesData);
-  const myChart = Chart.instances[0];
-  myChart.data.labels = labels;
-  myChart.data.datasets[0].data = salesData;
-  myChart.update();
-}
-document.addEventListener("DOMContentLoaded", () => {
-  createChart();
-});

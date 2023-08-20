@@ -142,9 +142,95 @@ top: 0;
 		transform: translateX(0);
 	}
 }
+#navbar-multi-level,#nav-links{
+  animation: navslide 2s ease 0s 1 normal forwards;
+}
+@keyframes navslide {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 1;
+		transform: translateY(-45px);
+	}
+
+	24% {
+		opacity: 1;
+	}
+
+	40% {
+		animation-timing-function: ease-in;
+		transform: translateY(-24px);
+	}
+
+	65% {
+		animation-timing-function: ease-in;
+		transform: translateY(-12px);
+	}
+
+	82% {
+		animation-timing-function: ease-in;
+		transform: translateY(-6px);
+	}
+
+	93% {
+		animation-timing-function: ease-in;
+		transform: translateY(-4px);
+	}
+
+	25%,
+	55%,
+	75%,
+	87% {
+		animation-timing-function: ease-out;
+		transform: translateY(0px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+
+
+
+
 #artist-section,#Photo-camera,.div-height{
   height: 100vh;
 }
 .photodiv-size{
   height: 80%;
+}
+
+.card-image{
+  height: 170px;
+  width: 100vw;
+}
+
+
+@media only screen and (min-width: 450px) {
+  body > div  {
+    display: none !important;
+  }
+  body{
+    background-color: #EDD5BB;
+  }
+ 
+}
+@media only screen and (max-width: 450px) {
+ .desktop-text{
+  display: none !important;
+ }
+ 
+}
+
+
+
+
+
+
+
+
+
+.banner-hero{
+  background-image: url("../../images/Bricks.png");
 }

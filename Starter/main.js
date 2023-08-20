@@ -28,7 +28,9 @@ for (let i = 0; i < 20; i++) {
   randomImg.src = `https://picsum.photos/seed/${i}/200/100`;
   randomImg.alt = `Random Image ${i}`;
   randomImg.style.margin = "5px";
-
+  randomImg.onclick = function () {
+    navigateTo("visitor-listing");
+  };
   if (Math.random() < 0.5) {
     topContainer.appendChild(randomImg);
   } else {
