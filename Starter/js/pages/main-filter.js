@@ -1,6 +1,22 @@
 function filterItems() {
-  const titleFilter = document.getElementById("title-filter");
   const artistFilter = document.getElementById("artists-filter");
+
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then((response) => response.json())
+    .then((data) => {
+      //console.log(data);
+
+      data.forEach((user) => {
+        const optionElement = document.createElement("option");
+        optionElement.value = user.name;
+        optionElement.textContent = user.name;
+        selectElement.appendChild(optionElement);
+      });
+    })
+    .catch((error) => {
+      console.error("An error occurred:", error);
+    });
+  const titleFilter = document.getElementById("title-filter");
   const minPriceFilter = document.getElementById("min-price");
   const maxPriceFilter = document.getElementById("max-price");
   const typeFilter = document.getElementById("type-filter");

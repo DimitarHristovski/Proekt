@@ -16,11 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
       !priceInput.value ||
       !imageURLInput.value
     ) {
-      event.preventDefault(); // Prevent form submission
+      event.preventDefault();
 
-      // Display an error message or highlight the required fields
       alert("Please fill out all required fields.");
-      return; // Add a return statement to stop further execution
+      return;
     }
     const newItem = {
       title: titleInput.value,
@@ -54,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const photoDiv = document.querySelector(".PhotoDiv");
   const imageUrlsInput = document.querySelector(".imageUrls");
 
-  // Access user's camera and display the feed
   function startCamera() {
     navigator.mediaDevices
       .getUserMedia({
@@ -68,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Capture image from camera stream
   function captureImage() {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
@@ -92,13 +89,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const imageUrls = JSON.parse(imageUrlsInput.value || "[]");
     imageUrls.push(imageURL);
-//So brisnje na [" pred data vo inputot kaj add item slikata se appendnuva nz zosto greska vadi nz
-    const cleanedImageUrls = imageUrls.map((url) =>
-      url.replace(/^\[|\]$/g, "")
-    );
+    console.log(imageUrls);
 
-    imageUrlsInput.value = JSON.stringify(cleanedImageUrls);
-    console.log(imageURL);
+    imageUrlsInput.value = JSON.stringify(imageURL);
+    console.log(imageUrlsInput);
   }
 
   captureButton.addEventListener("click", () => {
@@ -137,15 +131,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function createCard(item, container) {
     const card = document.createElement("div");
     card.classList.add("card");
-    card.style.border = "1px solid #ccc";
-    card.style.borderRadius = "8px";
-    card.style.padding = "10px";
-    card.style.margin = "10px";
-    card.setAttribute("data-card-id", item.id);
 
+    card.setAttribute("data-card-id", item.id);
     card.innerHTML = `
       <div class="card-content flex justify-between bg-cream flex-col" style="background-color: #FCEBD5;">
-        <img  class="card-image" src="${item.imageURL}"  alt="Item Image">
+        <img onclick="navigateTo('Photo-camera')"  class="card-image" src="${item.imageURL.slice(
+          1
+        )}"  alt="Item Image">
         
         <div class="titleDescContainer flex justify-between p-3 bg-cream">
           <div class="left flex flex-col">
@@ -175,6 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       </div>
     `;
+
     const sendAuctionBtn = card.querySelector(".sendToAuctionBtn");
     const publishBtn = card.querySelector(".publishBtn");
     const removeBtn = card.querySelector(".removeBtn");
@@ -182,7 +175,16 @@ document.addEventListener("DOMContentLoaded", function () {
     card.setAttribute("data-card-id", item.id);
 
     sendAuctionBtn.addEventListener("click", function () {
+      if (item.isAuctioning) {
+        return;
+      }
+
+      // Disable the button
       sendAuctionBtn.disabled = true;
+
+      // Add a class to change the color
+      sendAuctionBtn.classList.add("disabled-button");
+
       sendAuctionBtn.id = item.id;
       const auctionsContainer = document.querySelector(".auctions");
       const cardImage = card.querySelector(".card-image");
@@ -192,13 +194,16 @@ document.addEventListener("DOMContentLoaded", function () {
       auctionsContainer.appendChild(cardImage.cloneNode(true));
       auctionsContainer.appendChild(titleDescContainer.cloneNode(true));
       auctionsContainer.appendChild(infoContainer.cloneNode(true));
-      console.log("Sending item to auction:", item.auctionsContainer);
-      isAuctioning = true;
-      console.log("Sending item to auction:", item.auctionsContainer);
+
+      // Update the item's auctioning status and text
+      item.isAuctioning = true;
+      auctioningStatus.textContent = `Auctioning: ${item.isAuctioning}`;
     });
 
     publishBtn.addEventListener("click", function () {
       item.isPublished = !item.isPublished;
+      //publishedStatus.textContent = `Published: ${item.isPublished}`;
+
       publishBtn.textContent = item.isPublished ? "Unpublish" : "Publish";
       console.log("Item publish status:", item.isPublished);
     });
@@ -294,4 +299,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Format the date as "dd.mm.yyyy"
     return `${day}.${month}.${year}`;
   }
+
+  container.appendChild(card);
 });

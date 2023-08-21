@@ -15,7 +15,7 @@ function fetchAndPopulateArtists() {
         selectElement.appendChild(optionElement);
       });
 
-      console.log(artistItems);
+      //console.log(artistItems);
       localStorage.setItem("artists", JSON.stringify(data));
       selectElement.addEventListener("change", function () {
         const selectedName = this.value;
@@ -23,7 +23,7 @@ function fetchAndPopulateArtists() {
         selectedPerson = selectedName;
 
         let personItems = JSON.parse(localStorage.getItem("artistsItems"));
-        console.log(personItems);
+        //console.log(personItems);
         artistItems = personItems.filter(
           (item) => item.artist === selectedPerson
         );
@@ -34,8 +34,8 @@ function fetchAndPopulateArtists() {
         const soldProducts = dateSold(itemsPublish);
 
         const totalIncome = calculateTotalIncome(artistItems);
-        console.log(itemsPublish);
-
+        //console.log(itemsPublish);
+        console.log(artistItems);
         totalItemsSoldElement.textContent = `${soldProducts.length}/${itemsPublish.length}`;
         totalIncomeElement.textContent = `$${totalIncome}`;
         displayAppendedName();
@@ -44,11 +44,11 @@ function fetchAndPopulateArtists() {
     .catch((error) => {
       console.error("Error fetching data:", error);
     });
-}
+} /*
 document.addEventListener("DOMContentLoaded", () => {
   fetchAndPopulateArtists();
 });
-
+*/
 function displayAppendedName() {
   const appendedNameElements =
     document.getElementsByClassName("appendedArtist");
@@ -84,3 +84,4 @@ function calculateTotalIncome(soldItems) {
 }
 
 const totalItemsSold = calculateTotalItemsSold(items);
+

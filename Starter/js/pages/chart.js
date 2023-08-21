@@ -28,7 +28,7 @@ function createChart() {
       indexAxis: "y",
     },
   };
-  const myChart = new Chart(document.getElementById("myChart"), config);
+  const myChart = new Chart(document.getElementById("myChart"), config, data);
   document.querySelector("#last7").addEventListener("click", () => {
     const chartData = getLastDays(7);
     updateChartData(myChart, chartData);
@@ -54,16 +54,15 @@ function createChart() {
   });
 
   getDataForLastOneYear;
-  const initialChartData = getLastDays(7);
-  updateChartData(myChart, initialChartData);
 }
 
-function updateChartData(myChart, chartData) {
+function updateChartData(myChart, chartData, artistItems) {
   const soldData = artistItemArray(artistItems); // Use selectedPerson here
 
   chartData.salesData = soldData.map((items) =>
     items.reduce((sum, item) => sum + item.priceSold, 0)
   );
+  console.log(soldData);
 
   myChart.data.labels = chartData.dateLabel;
   myChart.data.datasets[0].data = chartData.salesData;

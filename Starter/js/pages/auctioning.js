@@ -1,9 +1,7 @@
+//imam nekoi greski ni AI ne mi pomaga...
 /*
   
-  function onAuctionPage() {
- 
-    auctionPage();
-  }
+
 
 function auctionPage() {
     const timer = document.querySelector(".timer");
@@ -23,21 +21,12 @@ function auctionPage() {
         localStorage.setItem("auctionTimer", time);
         time = +localStorage.getItem("auctionTimer");
     }
-
-    Check user type and bidding status, and set initial display
-    if (localStorage.getItem("userType") == "artist") {
-        bidForm.style.display = "none";
-    } else if (localStorage.getItem("noBid") !== null) {
-        confirmBidBtn.disabled = true;
-        bidAmountInput.value = "";
-    } else {
-        bidForm.style.display = "block";
-    }
+   
 
     Other variables and element selections...
 
     Check user type and bidding status, and set initial display
-    if (localStorage.getItem("userType") == "artist") {
+    if (localStorage.getItem("userType") == "artistsItems") {
         bidForm.style.display = "none";
     } else if (localStorage.getItem("noBid") !== null) {
         confirmBidBtn.disabled = true;
@@ -180,12 +169,3 @@ function makeBid(amount) {
 
 }
 */
-
- 
-  
-
-  
-
-
-
-

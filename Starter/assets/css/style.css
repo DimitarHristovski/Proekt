@@ -191,7 +191,10 @@ top: 0;
 	}
 }
 
-
+.disabled-button {
+  background-color: rgb(204, 227, 235);
+  cursor: not-allowed;
+}
 
 
 #artist-section,#Photo-camera,.div-height{
@@ -206,7 +209,12 @@ top: 0;
   width: 100vw;
 }
 
-
+#myChart{
+  height: 500px;
+  width: 400px;
+  max-width: 100%;
+  max-height: 100%;
+}
 @media only screen and (min-width: 450px) {
   body > div  {
     display: none !important;
@@ -222,7 +230,11 @@ top: 0;
  }
  
 }
-
+#confirmBid{
+  background-color: #A16A5E;
+  color: #EDD5BB;
+  padding: 6px 16px;
+}
 
 
 
